@@ -1,0 +1,11 @@
+
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://bhushanDB:bhushanPassword@cluster0.sxgtw1y.mongodb.net/TestJournalDB?retryWrites=true&w=majority
+      database: TestJournalDB
+      auto-index-creation: true
+
+server:
+  port: 8082

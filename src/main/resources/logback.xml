@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+    <!-- Console Appender -->
+
+    <appender name="myConsoleAppender"
+              class="ch.qos.logback.core.ConsoleAppender">
+
+        <encoder>
+            <pattern>
+                %d{yy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+
+    </appender>
+
+
+    <!-- File Appender -->
+
+    <appender name="myFileAppender"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+        <!-- Main log file -->
+        <file>logs/journalApp.log</file>
+
+        <!-- Rolling Policy -->
+        <rollingPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+
+            <!-- Old log files pattern -->
+            <fileNamePattern>
+                logs/journalApp-%d{yy-MM-dd}.%i.log
+            </fileNamePattern>
+
+            <!-- Max file size -->
+            <maxFileSize>10MB</maxFileSize>
+
+            <!-- Keep old logs -->
+            <maxHistory>10</maxHistory>
+
+        </rollingPolicy>
+
+        <!-- Pattern -->
+        <encoder>
+            <pattern>
+                %d{yy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+
+    </appender>
+
+    <!-- Package Specific Logging -->
+
+    <logger name="com.thebhushan.f1_journalApp"
+            level="DEBUG"
+            additivity="false">
+
+        <appender-ref ref="myConsoleAppender"/>
+        <appender-ref ref="myFileAppender"/>
+
+    </logger>
+
+
+    <!-- Root Logger -->
+
+    <root level="INFO">
+        <appender-ref ref="myConsoleAppender"/>
+        <appender-ref ref="myFileAppender"/>
+
+    </root>
+
+</configuration>

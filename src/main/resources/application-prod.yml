@@ -1,0 +1,14 @@
+
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://bhushanDB:bhushanPassword@cluster0.sxgtw1y.mongodb.net/JournalDB?retryWrites=true&w=majority
+      database: JournalDB
+      auto-index-creation: true
+
+server:
+  port: 8081
+  servlet:
+    context-path: /journal
+      
