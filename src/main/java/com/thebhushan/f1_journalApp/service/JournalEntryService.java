@@ -3,17 +3,16 @@ package com.thebhushan.f1_journalApp.service;
 import com.thebhushan.f1_journalApp.entity.JournalEntry;
 import com.thebhushan.f1_journalApp.entity.User;
 import com.thebhushan.f1_journalApp.repository.JournalEntryRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Component
 public class JournalEntryService {
     @Autowired
@@ -31,7 +30,7 @@ public class JournalEntryService {
             user.getJournalEntries().add(saved);
             userService.saveUser(user);
         } catch(Exception e){
-            System.out.println(e);
+            log.error("e: ", e);
         }
     }
 
@@ -59,7 +58,7 @@ public class JournalEntryService {
                 journalEntryRepository.deleteById(id);
             }
         }catch (Exception e){
-            System.out.println(e);
+            log.error("e: ", e);
             throw  new RuntimeException("An error Occurred while deleting the entry.",e);
         }
         return removed;
